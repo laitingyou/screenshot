@@ -24,6 +24,7 @@ module.exports = {
     /*
     ** Run ESLint on save
     */
+    vendor: ['axios', 'element-ui'],
     extend (config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({
@@ -33,7 +34,29 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-    }
+    },
+    // modules: [
+    //   '@nuxtjs/axios',
+    //   '@nuxtjs/proxy'
+    // ],
+    // proxy: [ // 设置代理
+    //   ['/api', { target: 'http://localhost:3333' }]
+    // ],
+    plugins: [
+      { src: '~plugins/nuxt-quill-plugin.js', ssr: false },
+      { src: '~plugins/element-ui.js', ssr: true },
+      { src: '~plugins/util.js', ssr: false }
+    ],
+
+    css: [
+      '~assets/css/base.scss',
+      'element-ui/lib/theme-chalk/reset.css',
+      'element-ui/lib/theme-chalk/index.css'
+    ],
+    // router: {
+    //   middleware: 'chekRouter'
+    // }
+
   }
 }
 

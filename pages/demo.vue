@@ -24,7 +24,7 @@
     },
     methods:{
       onSubmit(value){
-
+        console.log(value)
       }
     }
 
